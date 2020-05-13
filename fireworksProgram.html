@@ -1,0 +1,189 @@
+<!doctype html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        h1 {
+            font-family: "Lato";
+            font-size: 150%;
+        }
+
+        p {
+            font-family: "Lato";
+        }
+
+        .sidenav {
+            height: 100%;
+            width: 200px;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #53509c;
+            overflow-x: hidden; /* Disable horizontal scroll */
+            padding-top: 10px;
+        }
+
+        .main {
+            margin-left: 200px;
+            
+        }
+
+        .button {
+			border: none;
+			color: white;
+			padding: 10px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			margin: 4px 20px;
+			cursor: pointer;
+			border-radius: 50%;
+		}
+
+        .buttonplus {
+            background-color: #0e7a02;
+        }
+
+        .buttonminus {
+            background-color: #ba0f03;
+        }
+
+        .switch {
+		  position: relative;
+		  display: inline-block;
+		  width: 60px;
+		  height: 34px;
+          margin-left: 25px;
+		}	
+
+	.switch input {display:none;}
+
+	.slider {
+	  position: absolute;
+	  cursor: pointer;
+	  top: 0;
+	  left: 0;
+	  right: 0;
+	  bottom: 0;
+	  background-color: #ba1610;
+	  -webkit-transition: .4s;
+	  transition: .4s;
+	  
+	}
+
+	.slider:before {
+	  position: absolute;
+	  content: "";
+	  height: 26px;
+	  width: 26px;
+	  left: 4px;
+	  bottom: 4px;
+	  background-color: white;
+	  -webkit-transition: .4s;
+	  transition: .4s;
+	  
+	}
+
+	input:checked + .slider {
+	  background-color: #2fb207;
+	}
+
+	input:focus + .slider {
+	  box-shadow: 0 0 1px #2fb207;
+	}
+
+	input:checked + .slider:before {
+	  -webkit-transform: translateX(26px);
+	  -ms-transform: translateX(26px);
+	  transform: translateX(26px);
+	}
+
+	/* Rounded sliders */
+	.slider.round {
+	  border-radius: 34px;
+	}
+
+	.slider.round:before {
+	  border-radius: 50%;
+	}
+
+    </style>
+	
+<div class="main">
+
+        <h1> Fireworks Animation </h1>
+        <p> Made with Javascript and HTML 5 </p>
+        <head>
+            <meta charset="uft-8">
+            <title>Fireworks</title>
+            <link href="css/fireworks.css" rel="stylesheet">
+        </head>
+        <body>
+            <aside id="library">
+                <img src="images/big-glow.png" id="big-glow" />
+                <img src="images/small-glow.png" id="small-glow" />
+            </aside>
+        </body>
+        </div>
+        <script src="third_party/requestanimframe.js"></script>
+        <script src="js/fireworksComplete.js"></script>
+		
+    <div class="sidenav">
+      <p style="color:White; padding-left:30px;">USER SETTINGS<br/><br/>LAUNCH<br/>(Number of fireworks launched at once)</p>
+
+      <button id="launchUp" class="button buttonplus" onclick="up(12, 'launchLvls')">+</button>
+      <input type="text" id="launchLvls" value="1" max="15" size="2" />
+      <button id="launchDown" class="button buttonminus" onclick="down(1, 'launchLvls')">-</button>
+
+      <p style="color:White; padding-left:30px;">AUTOMATIC LAUNCHING<br/>(If off, click the black background to launch a firework)</p>
+      <label class="switch">
+          <input id="autoLaunchSwitch" type="checkbox" />
+          <span class="slider round"></span>
+      </label>  
+
+      <p style="color:White; padding-left:30px;">SECONDS BETWEEN EACH LAUNCH</p>
+      <button id="timerUp" class="button buttonplus" onclick="up(10000, 'timerLvls')">+</button>
+      <input type="text" id="timerLvls" value="4" size="2" />
+      <button id="timerDown" class="button buttonminus" onclick="down(1, 'timerLvls')">-</button>
+
+      <p style="color:White; padding-left:30px;">FIREWORKS<br/><br/>GRAVITY</p>
+      <button id="gravUp" class = "button buttonplus" onclick = "up(15, 'gravLvls')">+</button>
+      <input type="text" id="gravLvls" value="2" max = "15" size="2" />
+      <button id="gravDown" class = "button buttonminus" onclick = "down(0, 'gravLvls')">-</button>
+      
+      <p style="color:White; padding-left:30px;">ZERO GRAVITY</p>
+      <label class="switch">
+      <input id="gravitySwitch" type="checkbox" />
+      <span class="slider round"></span>
+      </label>
+
+      <p style="color:White; padding-left:30px;">AMOUNT OF PARTICLES</p>
+      <button id="particleUp" class="button buttonplus" onclick="up(10, 'particleLvls')">+</button>
+      <input type="text" id="particleLvls" value="8" max=" = "10" size="2" />
+      <button id="particleDown" class="button buttonminus" onclick="down(1, 'particleLvls')">-</button>
+
+      <p style="color:White; padding-left:30px;">*NOTE: Do not input numbers in the textbox, use +/- buttons to adjust the features</p>
+      
+        </div>
+    
+  <script> 
+      function up(max, id) {
+          document.getElementById(id).value = parseInt(document.getElementById(id).value) + 1;
+          if (document.getElementById(id).value >= parseInt(max)) {
+              document.getElementById(id).value = max;
+          }
+      }
+      function down(min, id) {
+          document.getElementById(id).value = parseInt(document.getElementById(id).value) - 1;
+          if (document.getElementById(id).value <= parseInt(min)) {
+              document.getElementById(id).value = min;
+          }
+      }
+
+  </script>
+
+    
+
+    
+        </html>
